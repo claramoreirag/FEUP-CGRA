@@ -22,13 +22,29 @@ class MyScene extends CGFscene {
         this.setUpdatePeriod(50);
         
         this.enableTextures(true);
-
+        
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
-
+        this.cylinder = new MyCylinder(this,16,8,3);
+        this.cube=new MyCubeMap(this);
+        this.vehicle=new MyVehicle(this);
         //Objects connected to MyInterface
         this.displayAxis = true;
+
+
+        this.diamondMaterial = new CGFappearance(this);
+        this.diamondMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+        this.diamondMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.diamondMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+        this.diamondMaterial.setShininess(10.0);
+        this.diamondMaterial.loadTexture('images/earth.jpg');
+        this.diamondMaterial.setTextureWrap( 'Repeat','Clamp to edge');
+
+
+        this.currentTexture=-1;
+        
+        this.textureList={'Cubemap':0,'Mountains':1};
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -50,6 +66,28 @@ class MyScene extends CGFscene {
         //To be done...
     }
 
+    checkKeys(){
+        var text = "keys pressed: ";
+        var keysPressed =false;
+
+        if(this.gui.isKeyPressed("KeyW")){
+            text+=" W ";
+            keysPressed = true;
+        }
+
+        if(this.gui.isKeyPressed("KeyS")){
+            text+=" S ";
+            keysPressed=true;
+        }
+
+        if(keysPressed)
+            console.log(text);
+    }
+    updateTexture(){
+        
+        this.cube.updateTexture(this.currentTexture);
+        
+    }
     display() {
         // ---- BEGIN Background, camera and axis setup
         // Clear image and depth buffer everytime we update the scene
@@ -70,8 +108,11 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        this.incompleteSphere.display();
-
+        this.diamondMaterial.apply();
+         this.incompleteSphere.display();
+       this.cylinder.display();
+        this.cube.display();
+       // this.vehicle.display();
         // ---- END Primitive drawing section
     }
 }
