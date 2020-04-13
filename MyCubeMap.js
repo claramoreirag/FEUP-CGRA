@@ -139,12 +139,12 @@ class MyCubeMap extends CGFobject {
             this.top.loadTexture('images/split_cubemap/top.png');
         }
         else if(this.scene.currentTexture==1){
-            this.r.loadTexture('images/split_mountains/right.png');
-            this.fr.loadTexture('images/split_mountains/front.png');
-            this.l.loadTexture('images/split_mountains/left.png');
-            this.bot.loadTexture('images/split_mountains/bottom.png');
-            this.b.loadTexture('images/split_mountains/back.png');
-            this.top.loadTexture('images/split_mountains/top.png');
+            this.r.loadTexture('images/split_mountains/right.jpg');
+            this.fr.loadTexture('images/split_mountains/front.jpg');
+            this.l.loadTexture('images/split_mountains/left.jpg');
+            this.bot.loadTexture('images/split_mountains/bottom.jpg');
+            this.b.loadTexture('images/split_mountains/back.jpg');
+            this.top.loadTexture('images/split_mountains/top.jpg');
         }
     }
 }
