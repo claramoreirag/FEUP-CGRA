@@ -45,6 +45,10 @@ class MyScene extends CGFscene {
         this.currentTexture=-1;
         
         this.textureList={'Cubemap':0,'Mountains':1};
+
+        this.speedFactor = 0.5;
+        this.scaleFactor = 1;
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -63,8 +67,10 @@ class MyScene extends CGFscene {
     }
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
-        //To be done...
+        this.checkKeys();
     }
+
+
 
     checkKeys(){
         var text = "keys pressed: ";
@@ -73,12 +79,35 @@ class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyW")){
             text+=" W ";
             keysPressed = true;
+            this.vehicle.accelerate(this.speedFactor*this.vehicle.v);
         }
 
         if(this.gui.isKeyPressed("KeyS")){
             text+=" S ";
             keysPressed=true;
+            this.vehicle.accelerate(-this.speedFactor*this.vehicle.v);
         }
+
+        if(this.gui.isKeyPressed("KeyA")){
+            text+=" A ";
+            keysPressed=true;
+            this.vehicle.turn(5);
+        }
+
+        if(this.gui.isKeyPressed("KeyD")){
+            text+=" D ";
+            keysPressed=true;
+            this.vehicle.turn(-5);
+        }
+
+        if(this.gui.isKeyPressed("KeyR")){
+            text+=" R ";
+            keysPressed=true;
+            this.vehicle.reset();
+        }
+
+        if(keysPressed)
+            this.vehicle.update();
 
         if(keysPressed)
             console.log(text);
@@ -105,6 +134,14 @@ class MyScene extends CGFscene {
 
         this.setDefaultAppearance();
 
+
+        var sca = [this.scaleFactor, 0.0, 0.0, 0.0,
+            0.0, this.scaleFactor, 0.0, 0.0,
+            0.0, 0.0, this.scaleFactor, 0.0,
+            0.0, 0.0, 0.0, 1.0];
+
+        this.multMatrix(sca);
+
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
@@ -112,6 +149,7 @@ class MyScene extends CGFscene {
         //this.incompleteSphere.display();
         //this.cylinder.display();
         //this.cube.display();
+        this.pushMatrix();
         this.vehicle.display();
         // ---- END Primitive drawing section
     }
