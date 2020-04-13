@@ -146,5 +146,6 @@ class MyCubeMap extends CGFobject {
             this.b.loadTexture('images/split_mountains/back.png');
             this.top.loadTexture('images/split_mountains/top.png');
         }
+       
     }
 }

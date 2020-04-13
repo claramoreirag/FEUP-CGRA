@@ -42,7 +42,7 @@ class MyScene extends CGFscene {
         this.diamondMaterial.setTextureWrap( 'Repeat','Clamp to edge');
 
 
-        this.currentTexture=-1;
+        this.currentTexture=0;
         
         this.textureList={'Cubemap':0,'Mountains':1};
     }
@@ -85,7 +85,7 @@ class MyScene extends CGFscene {
     }
     updateTexture(){
         
-        this.cube.updateTexture(this.currentTexture);
+        this.cube.updateTexture();
         
     }
     display() {
@@ -108,11 +108,11 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        this.diamondMaterial.apply();
-         this.incompleteSphere.display();
-       this.cylinder.display();
+        //this.diamondMaterial.apply();
+        //this.incompleteSphere.display();
+        //this.cylinder.display();
         this.cube.display();
-       // this.vehicle.display();
+        this.vehicle.display();
         // ---- END Primitive drawing section
     }
 }
