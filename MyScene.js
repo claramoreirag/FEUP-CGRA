@@ -108,11 +108,11 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        this.diamondMaterial.apply();
-         this.incompleteSphere.display();
-       this.cylinder.display();
-        this.cube.display();
-       // this.vehicle.display();
+        //this.diamondMaterial.apply();
+        //this.incompleteSphere.display();
+        //this.cylinder.display();
+        //this.cube.display();
+        this.vehicle.display();
         // ---- END Primitive drawing section
     }
 }
