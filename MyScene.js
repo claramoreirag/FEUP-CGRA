@@ -106,8 +106,8 @@ class MyScene extends CGFscene {
             this.vehicle.reset();
         }
 
-        if(keysPressed)
-            this.vehicle.update();
+        
+        this.vehicle.update();
 
         if(keysPressed)
             console.log(text);
