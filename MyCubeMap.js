@@ -16,6 +16,7 @@ class MyCubeMap extends CGFobject {
         this.l.setDiffuse(0.0, 0.0, 0.0, 1);
         this.l.setSpecular(0.0, 0.0, 0.0, 1);
         this.l.setShininess(10.0);
+        this.l.setEmission(0.5,0.5,0.5,1);
         this.l.loadTexture('images/split_cubemap/left.png');
         this.l.setTextureWrap('REPEAT', 'REPEAT');
 
@@ -25,6 +26,7 @@ class MyCubeMap extends CGFobject {
         this.r.setDiffuse(0.0, 0.0, 0.0, 1);
         this.r.setSpecular(0.0, 0.0, 0.0, 1);
         this.r.setShininess(10.0);
+        this.r.setEmission(0.5,0.5,0.5,1);
         this.r.loadTexture('images/split_cubemap/right.png');
         this.r.setTextureWrap('REPEAT', 'REPEAT');
         
@@ -34,6 +36,7 @@ class MyCubeMap extends CGFobject {
         this.fr.setDiffuse(0.0, 0.0, 0.0, 1);
         this.fr.setSpecular(0.0, 0.0, 0.0, 1);
         this.fr.setShininess(10.0);
+        this.fr.setEmission(0.5,0.5,0.5,1);
         this.fr.loadTexture('images/split_cubemap/front.png');
         this.fr.setTextureWrap('REPEAT', 'REPEAT');
  
@@ -43,17 +46,9 @@ class MyCubeMap extends CGFobject {
         this.b.setDiffuse(0.0, 0.0, 0.0, 1);
         this.b.setSpecular(0.0, 0.0, 0.0, 1);
         this.b.setShininess(10.0);
+        this.b.setEmission(0.5,0.5,0.5,1);
         this.b.loadTexture('images/split_cubemap/back.png');
         this.b.setTextureWrap('REPEAT', 'REPEAT');
-
-        //top material
-        this.top = new CGFappearance(this.scene);
-        this.top.setAmbient(0.9, 0.9, 0.9, 1);
-        this.top.setDiffuse(0.0, 0.0, 0.0, 1);
-        this.top.setSpecular(0.0, 0.0, 0.0, 1);
-        this.top.setShininess(10.0);
-        this.top.loadTexture('images/split_cubemap/top.png');
-        this.top.setTextureWrap('REPEAT', 'REPEAT');
 
         //bottom material
         this.bot = new CGFappearance(this.scene);
@@ -61,14 +56,26 @@ class MyCubeMap extends CGFobject {
         this.bot.setDiffuse(0.0, 0.0, 0.0, 1);
         this.bot.setSpecular(0.0, 0.0, 0.0, 1);
         this.bot.setShininess(10.0);
+        this.bot.setEmission(0.5,0.5,0.5,1);
         this.bot.loadTexture('images/split_cubemap/bottom.png');
         this.bot.setTextureWrap('REPEAT', 'REPEAT');
+
+
+        //top material
+        this.top = new CGFappearance(this.scene);
+        this.top.setAmbient(0.9, 0.9, 0.9, 1);
+        this.top.setDiffuse(0.0, 0.0, 0.0, 1);
+        this.top.setSpecular(0.0, 0.0, 0.0, 1);
+        this.top.setShininess(10.0);
+        this.top.setEmission(0.5,0.5,0.5,1);
+        this.top.loadTexture('images/split_cubemap/top.png');
+        this.top.setTextureWrap('REPEAT', 'REPEAT');
+
+        
     }
 	display() {
         this.scene.pushMatrix();
         this.scene.scale(50,50,50);
-
-
 
         this.scene.pushMatrix();
         this.scene.translate(0,-0.5,0);
