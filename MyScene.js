@@ -28,7 +28,7 @@ class MyScene extends CGFscene {
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.cylinder = new MyCylinder(this,16,8,3);
         this.cube=new MyCubeMap(this);
-        this.vehicle=new MyVehicle(this);
+        this.vehicle=new MyVehicle(this,16,8);
         //Objects connected to MyInterface
         this.displayAxis = true;
 
@@ -147,11 +147,11 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        this.diamondMaterial.apply();
-        this.incompleteSphere.display();
-        this.cylinder.display();
+        //this.incompleteSphere.display();
+        //this.cylinder.display();
         this.cube.display();
         this.popMatrix();
+        this.diamondMaterial.apply();
         this.vehicle.display();
         // ---- END Primitive drawing section
     }

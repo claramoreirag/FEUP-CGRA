@@ -1,9 +1,9 @@
 /**
- * MyQuad
+ * MyDSQuad
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyQuad extends CGFobject {
+class MyDSQuad extends CGFobject {
 	constructor(scene, coords) {
 		super(scene);
 		this.initBuffers();
@@ -22,16 +22,21 @@ class MyQuad extends CGFobject {
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			2, 1, 0,
-			2, 3, 1
-			
+			2, 3, 1,
+			2,0,1,
+			2,1,3
 		];
 
 		//Facing Z negative
 		this.normals = [
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1,
+			0, 0, 1,
 			0, 0, -1,
 			0, 0, -1,
 			0, 0, -1,
-			0, 0, -1
+			0, 0, -1,
 		];
 		
 		/*
@@ -48,7 +53,8 @@ class MyQuad extends CGFobject {
 			0, 1,
 			1, 1,
 			0, 0,
-			1, 0
+			1, 0,
+			
 		]
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
