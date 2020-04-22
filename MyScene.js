@@ -147,9 +147,9 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         //This sphere does not have defined texture coordinates
-        //this.diamondMaterial.apply();
-        //this.incompleteSphere.display();
-        //this.cylinder.display();
+        this.diamondMaterial.apply();
+        this.incompleteSphere.display();
+        this.cylinder.display();
         this.cube.display();
         this.popMatrix();
         this.vehicle.display();
