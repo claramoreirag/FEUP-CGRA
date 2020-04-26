@@ -12,7 +12,7 @@ class MyVehicle extends CGFobject {
 	constructor(scene,slices,stacks) {
         super(scene);
         this.orientation = 0;
-        this.v = 0;
+        this.v = 0.1;
         this.x = 0;
         this.y = 0;
         this.z = 0;
@@ -35,11 +35,13 @@ class MyVehicle extends CGFobject {
     turn(val){
 
         this.orientation += val;
+       // this.ruddervert.rotate(val*this.speed*0.2);
     }
 
     accelerate(val){
 
         this.v += val;
+        if(this.v<0) this.v=0;
 
     }
 
@@ -55,59 +57,58 @@ class MyVehicle extends CGFobject {
     display(){
 
         this.scene.translate(this.x, this.y, this.z);
-        this.scene.scale(2,2,2);
+        this.scene.rotate(this.orientation*Math.PI/180, 0, 1, 0);
+        this.scene.scale(4,4,4);
+        this.scene.translate(0,0,0);
         this.scene.pushMatrix();
-        /*
-        this.scene.rotate(this.orientation*Math.PI/180.0, 0, 1, 0);
-        this.scene.translate(0,0,-0.5)
-        this.scene.rotate(Math.PI/4, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 1, 0, 0);
-        this.triangle.display(); 
-        this.scene.popMatrix();
-        this.scene.pushMatrix();
-         */
-        this.scene.translate(0,1.2,0);
-        this.scene.scale(0.7,0.7,1.3);
+      
+        this.scene.translate(0,1,0);
+        this.scene.scale(0.5,0.5,1);
         this.ellipsoid.display(); 
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(0,0.5,-0.30);
+        this.scene.translate(0,0.45,-0.30);
+        this.scene.scale(0.9,0.9,0.9);
         this.capsule.display();
         this.scene.popMatrix();
 
+
+        //engines
         this.scene.pushMatrix();
-        this.scene.translate(0.14,0.42,-0.3);
+        this.scene.translate(0.13,0.37,-0.3);
         this.engine.display();
         this.scene.popMatrix();
         
         this.scene.pushMatrix();
-        this.scene.translate(-0.14,0.42,-0.3);
+        this.scene.translate(-0.13,0.37,-0.3);
         this.engine.display();
         this.scene.popMatrix();
 
+
+
+        //rudders
         this.scene.pushMatrix();
-        this.scene.translate(0,1.5,-1);
+        this.scene.translate(0,1.3,-0.7);
         this.ruddvert.display();
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(0,0.8,-1);
+        this.scene.translate(0,0.7,-0.7);
         this.scene.rotate(Math.PI, 0,0,1);
         this.ruddvert.display();
         this.scene.popMatrix();
 
         
         this.scene.pushMatrix();
-        this.scene.translate(-0.45,1.1,-1);
+        this.scene.translate(-0.35,1,-0.7);
         this.scene.rotate(Math.PI/2, 0,0,1);
         this.ruddhoriz.display();
         this.scene.popMatrix();
 
         
         this.scene.pushMatrix();
-        this.scene.translate(0.45,1.1,-1);
+        this.scene.translate(0.35,1,-0.7);
         this.scene.rotate(-Math.PI/2, 0,0,1);
         this.ruddhoriz.display();
         this.scene.popMatrix();
