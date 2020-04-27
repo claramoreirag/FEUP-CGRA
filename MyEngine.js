@@ -18,5 +18,20 @@ class MyEngine extends CGFobject {
         this.sphere.display();
         this.scene.popMatrix();
         
+        //proppellers
+        this.scene.pushMatrix();
+        this.scene.translate(0,0,-0.13);
+        this.scene.rotate(Math.PI/2, 0,1,0);
+        this.scene.scale(0.012,0.012,0.09);
+        this.sphere.display();
+        this.scene.popMatrix();
+/* 
+        this.scene.pushMatrix();
+        this.scene.translate(0,0,-0.13);
+       
+        this.scene.rotate(Math.PI/2, 1,0,0);
+        this.scene.scale(0.012,0.012,0.09);
+        this.sphere.display();
+        this.scene.popMatrix(); */
     }
 }
