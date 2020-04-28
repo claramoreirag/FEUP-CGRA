@@ -16,6 +16,8 @@ class MyVehicle extends CGFobject {
         this.x = 0;
         this.y = 0;
         this.z = 0;
+        this.propAngle=0
+       
         this.ruddvert=new MyRudder(scene);
         this.ruddhoriz=new MyRudder(scene);
         this.triangle = new MyTriangle(scene);
@@ -26,7 +28,7 @@ class MyVehicle extends CGFobject {
     }
     
     update(){
-
+        this.propAngle += 20 * this.v;
         this.z += this.v * Math.cos(this.orientation*Math.PI/180.0);
         this.x += this.v * Math.sin(this.orientation*Math.PI/180.0);
 
@@ -35,14 +37,13 @@ class MyVehicle extends CGFobject {
     turn(val){
 
         this.orientation += val;
-       // this.ruddervert.rotate(val*this.speed*0.2);
+      
     }
 
     accelerate(val){
 
         this.v += val;
-        if(this.v<0) this.v=0;
-
+        
     }
 
     reset(){
@@ -88,13 +89,23 @@ class MyVehicle extends CGFobject {
 
 
         //rudders
+
         this.scene.pushMatrix();
+        
         this.scene.translate(0,1.3,-0.7);
+        if (this.scene.gui.isKeyPressed("KeyD"))
+        this.scene.rotate(Math.PI /8, 0, 1, 0);
+        if (this.scene.gui.isKeyPressed("KeyA"))
+        this.scene.rotate(-Math.PI/8, 0, 1, 0);
         this.ruddvert.display();
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
         this.scene.translate(0,0.7,-0.7);
+        if (this.scene.gui.isKeyPressed("KeyD"))
+        this.scene.rotate(Math.PI/8, 0, 1, 0);
+        if (this.scene.gui.isKeyPressed("KeyA"))
+        this.scene.rotate(-Math.PI/8, 0, 1, 0);
         this.scene.rotate(Math.PI, 0,0,1);
         this.ruddvert.display();
         this.scene.popMatrix();
@@ -112,6 +123,7 @@ class MyVehicle extends CGFobject {
         this.scene.rotate(-Math.PI/2, 0,0,1);
         this.ruddhoriz.display();
         this.scene.popMatrix();
+    
     }
 
 }    

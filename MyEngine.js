@@ -21,6 +21,7 @@ class MyEngine extends CGFobject {
         //proppellers
         this.scene.pushMatrix();
         this.scene.translate(0,0,-0.13);
+        this.scene.rotate(this.scene.vehicle.propAngle, 0, 0, 1);
         this.scene.rotate(Math.PI/2, 0,1,0);
         this.scene.scale(0.012,0.012,0.09);
         this.sphere.display();
