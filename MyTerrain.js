@@ -9,20 +9,26 @@ class MyTerrain extends CGFobject{
         super(scene);
         this.plane = new MyPlane(scene, 20);
         this.shader = new CGFshader(this.scene.gl, "shaders/terrain.vert", "shaders/terrain.frag");
-        this.terrainTex = new CGFtexture(this.scene, "textures/terrain.jpg");
-        this.terrainMap = new CGFtexture(this.scene, "textures/heightmap.jpg");
+        this.terrainVert = new CGFtexture(this.scene, "images/terrain.jpg");
+        this.terrainMap = new CGFtexture(this.scene, "images/heightmap.jpg");
+
+        this.shader.setUniformsValues({ uSampler: 0});
+        this.shader.setUniformsValues({ uSampler2: 1});
+
 
     }
 
     display(){
         
-        this.scene.appearance.setTexture(this.terrainMap);
-        this.scene.appearance.setTextureWrap('REPEAT', 'REPEAT');
-        this.terrainTex.bind(1);
-        this.scene.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.REPEAT);
-        this.scene.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.REPEAT);
-        this.shader.setUniformValues({terrainMap: 0});
-        this.shader.setUniformValues({terrainTex: 1});
+        this.scene.setActiveShader(this.shader);
+        this.terrainVert.bind(0);
+        this.terrainMap.bind(1);
+        this.scene.pushMatrix();
+        this.scene.rotate(-Math.PI/2, 1,0,0);
+        //this.scene.scale(50, 1, 50);
+        this.plane.display();
+        this.scene.popMatrix();
+        this.scene.setActiveShader(this.scene.defaultShader);
     }
 
 
