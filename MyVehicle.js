@@ -90,11 +90,11 @@ class MyVehicle extends CGFobject {
     }
 
     display(){
-
+        this.scene.pushMatrix();
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation*Math.PI/180, 0, 1, 0);
-        this.scene.scale(4,4,4);
-        this.scene.translate(0,0,0);
+        //this.scene.scale(4,4,4);
+        this.scene.translate(0,9,0);
         this.scene.pushMatrix();
       
         this.scene.translate(0,1,0);
@@ -157,7 +157,7 @@ class MyVehicle extends CGFobject {
         this.scene.rotate(-Math.PI/2, 0,0,1);
         this.ruddhoriz.display();
         this.scene.popMatrix();
-    
+        this.scene.popMatrix();
     }
 
 }    
