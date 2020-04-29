@@ -68,7 +68,7 @@ class MyScene extends CGFscene {
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
         this.checkKeys();
-        this.vehicle.update();
+        this.vehicle.update(t);
     }
 
 
@@ -77,25 +77,25 @@ class MyScene extends CGFscene {
         var text = "keys pressed: ";
         var keysPressed =false;
 
-        if(this.gui.isKeyPressed("KeyW")){
+        if(this.gui.isKeyPressed("KeyW") && !this.vehicle.autopilot){
             text+=" W ";
             keysPressed = true;
-            this.vehicle.accelerate(this.speedFactor*this.vehicle.v);
+            this.vehicle.accelerate(this.speedFactor*0.3);
         }
 
-        if(this.gui.isKeyPressed("KeyS")){
+        if(this.gui.isKeyPressed("KeyS")&& !this.vehicle.autopilot){
             text+=" S ";
             keysPressed=true;
-            this.vehicle.accelerate(-this.speedFactor*this.vehicle.v);
+            this.vehicle.accelerate(-this.speedFactor*0.3);
         }
 
-        if(this.gui.isKeyPressed("KeyA")){
+        if(this.gui.isKeyPressed("KeyA")&& !this.vehicle.autopilot){
             text+=" A ";
             keysPressed=true;
             this.vehicle.turn(5);
         }
 
-        if(this.gui.isKeyPressed("KeyD")){
+        if(this.gui.isKeyPressed("KeyD")&& !this.vehicle.autopilot){
             text+=" D ";
             keysPressed=true;
             this.vehicle.turn(-5);
@@ -107,7 +107,10 @@ class MyScene extends CGFscene {
             this.vehicle.reset();
         }
 
-        
+        if (this.gui.isKeyPressed("KeyP") && !this.vehicle.autopilot){
+            this.vehicle.activateAutopilot();}
+      
+
         if(keysPressed)
             this.vehicle.update();
 
