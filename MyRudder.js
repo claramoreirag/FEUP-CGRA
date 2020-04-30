@@ -7,12 +7,9 @@ class MyRudder extends CGFobject {
 	constructor(scene) {
         super(scene);
         this.initBuffers();
-        this.rotation=0;
+      
     }
-    
-    rotate(angle){
-        this.rotation=angle;
-    }
+
 	
 	initBuffers() {
         this.triangle = new MyTriangle(this.scene);
@@ -22,7 +19,6 @@ class MyRudder extends CGFobject {
     display(){
         this.scene.pushMatrix();
         this.scene.scale(0.35,0.35,0.35);
-        this.scene.rotate(-this.rotation*Math.PI/180, 1,0,0);
         this.scene.rotate(-Math.PI/2, 0,1,0);
         this.scene.pushMatrix();
         this.scene.translate(-1,0,0);
