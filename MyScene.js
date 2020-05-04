@@ -30,7 +30,7 @@ class MyScene extends CGFscene {
         this.cube=new MyCubeMap(this);
         this.vehicle=new MyVehicle(this,16,8);
         this.terrain=new MyTerrain(this);
-
+      
         this.supplies_used = 0;
         this.supplies_vec = [];
         for(var i = 0; i < 5; i++)
@@ -183,7 +183,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         this.diamondMaterial.apply();
         this.vehicle.display();
-       
+      
         this.terrain.display();
         for(var idx = 0; idx < 5; idx++)
         {
