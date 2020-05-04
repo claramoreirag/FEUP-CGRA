@@ -30,7 +30,13 @@ class MyScene extends CGFscene {
         this.cube=new MyCubeMap(this);
         this.vehicle=new MyVehicle(this,16,8);
         this.terrain=new MyTerrain(this);
-    
+
+        this.supplies_used = 0;
+        this.supplies_vec = [];
+        for(var i = 0; i < 5; i++)
+        {
+            this.supplies_vec.push(new MySupply(this));
+        }
         //Objects connected to MyInterface
         this.displayAxis = true;
 
@@ -71,6 +77,10 @@ class MyScene extends CGFscene {
     update(t){
         this.checkKeys();
         this.vehicle.update(t);
+        for(var idx = 0; idx < 5; idx++)
+        {
+            this.supplies_vec[idx].update(t);
+        }
     }
 
 
@@ -107,11 +117,26 @@ class MyScene extends CGFscene {
             text+=" R ";
             keysPressed=true;
             this.vehicle.reset();
+            this.supplies_used = 0;
+            for (var idx = 0; idx < 5; idx++)
+            {
+                this.supplies_vec[idx].state = SupplyStates.INACTIVE;
+                this.supplies_vec[idx].y = 10;
+                this.supplies_vec[idx].lastUpdate = 0;
+
+
+            }
         }
 
         if (this.gui.isKeyPressed("KeyP") && !this.vehicle.autopilot){
-            this.vehicle.activateAutopilot();}
+            this.vehicle.activateAutopilot();
+        }
       
+        if (this.gui.isKeyPressed("KeyL") && this.supplies_used < 5)
+        {
+            this.supplies_vec[this.supplies_used].drop(this.vehicle.x, this.vehicle.z);
+            this.supplies_used++;
+        }
 
         if(keysPressed)
             this.vehicle.update();
@@ -160,6 +185,10 @@ class MyScene extends CGFscene {
         this.vehicle.display();
        
         this.terrain.display();
+        for(var idx = 0; idx < 5; idx++)
+        {
+            this.supplies_vec[idx].display();
+        }
 
         // ---- END Primitive drawing section
     }
