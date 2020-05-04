@@ -15,68 +15,49 @@ class MySupply extends CGFobject {
 
 	constructor(scene) {
         super(scene);
-        this.down=new MyQuad(scene);
-        this.up=new MyQuad(scene);
-        this.front=new MyQuad(scene);
-        this.back=new MyQuad(scene);
-        this.left=new MyQuad(scene);
-        this.right=new MyQuad(scene);
+        this.supply = new MyUnitCubeQuad(this.scene);
         this.state=SupplyStates.INACTIVE;
+        this.x = 0;
+        this.y = 8;
+        this.z = 0;
 		
 	}
 	
     display(){
 
-        this.scene.pushMatrix();
-        this.scene.translate(0,-0.5,0);
-        this.scene.rotate(Math.PI/2,1,0,0);
-        this.down.display();
-        this.scene.popMatrix();
-
-
-        this.scene.pushMatrix();
-        this.scene.translate(0,0.5,0);
-        this.scene.rotate(-Math.PI/2,1,0,0);
-        this.up.display();
-        this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-        this.scene.translate(-0.5,0,0);
-        this.scene.rotate(-Math.PI/2,0,1,0);
-        this.left.display();
-        this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-        this.scene.translate(0.5,0,0);
-        this.scene.rotate(Math.PI/2,0,1,0);
-        this.right.display();
-        this.scene.popMatrix();
-
-        this.scene.pushMatrix();
-        this.scene.translate(0,0,-0.5);
-        this.scene.rotate(Math.PI, 0, 1, 0);
-        this.back.display();
-        this.scene.popMatrix();
         
         this.scene.pushMatrix();
-        this.scene.translate(0,0,0.5);
-        this.front.display();
+        this.scene.translate(this.x, this.y, this.z);
+        this.supply.display();
         this.scene.popMatrix();
+       
 
     }
 
-    update(){
-
+    update(time){
+        if (this.state == this.SupplyStates.FALLING)
+        {
+            this.y -= 0.5;
+            if(this.y <= 0)
+            {
+                this.y = 0;
+                this.land();
+            }
+        }
     }
 
-    drop(dropPosition){
+    drop(x, y, z){
 
+        this.x = x;
+        this.y = y;
+        this.z = z;
         this.state = this.SupplyStates.FALLING;
     }
 
     land(){
 
-        this.state = this.SupplyStates.LANDED;
+        if(this.y == 0)
+            this.state = this.SupplyStates.LANDED;
     }
 
 

@@ -30,6 +30,7 @@ class MyScene extends CGFscene {
         this.cube=new MyCubeMap(this);
         this.vehicle=new MyVehicle(this,16,8);
         this.terrain=new MyTerrain(this);
+    
         //Objects connected to MyInterface
         this.displayAxis = true;
 
@@ -157,6 +158,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         this.diamondMaterial.apply();
         this.vehicle.display();
+       
         this.terrain.display();
 
         // ---- END Primitive drawing section
