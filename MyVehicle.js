@@ -198,7 +198,7 @@ class MyVehicle extends CGFobject {
         
         this.scene.pushMatrix();
         this.scene.translate(0.35,1,-0.7);
-        this.scene.rotate(-Math.PI/2, 1,0,1);
+        this.scene.rotate(-Math.PI/2, 0,0,1);
        
         this.ruddhoriz.display();
         this.scene.popMatrix();
