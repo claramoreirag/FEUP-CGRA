@@ -32,8 +32,46 @@ class MyVehicle extends CGFobject {
         this.ellipsoid= new MySphere(scene,slices,stacks);
         this.engine=new MyEngine(scene,slices,stacks);
         this.capsule=new MyCapsule(scene,slices,stacks);
+        this.flag=new MyPlane(scene);
         this.initBuffers();
+        this.initMaterials();
     }
+
+    initMaterials(scene){
+       
+        this.bodyTex = new CGFappearance(this.scene);
+        this.bodyTex.setAmbient(0.1, 0.1, 0.1, 1);
+        this.bodyTex.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.bodyTex.setSpecular(0.1, 0.1, 0.1, 1);
+        this.bodyTex.setShininess(10.0);
+        this.bodyTex.loadTexture('images/flowers.jpg');
+        this.bodyTex.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.blueTex = new CGFappearance(this.scene);
+        this.blueTex.setAmbient(0.1, 0.1, 0.1, 1);
+        this.blueTex.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.blueTex.setSpecular(0.1, 0.1, 0.1, 1);
+        this.blueTex.setShininess(10.0);
+        this.blueTex.loadTexture('images/blue.png');
+        this.blueTex.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.coralTex = new CGFappearance(this.scene);
+        this.coralTex.setAmbient(0.1, 0.1, 0.1, 1);
+        this.coralTex.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.coralTex.setSpecular(0.1, 0.1, 0.1, 1);
+        this.coralTex.setShininess(10.0);
+        this.coralTex.loadTexture('images/coral.png');
+        this.coralTex.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.pinkTex = new CGFappearance(this.scene);
+        this.pinkTex.setAmbient(0.1, 0.1, 0.1, 1);
+        this.pinkTex.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.pinkTex.setSpecular(0.1, 0.1, 0.1, 1);
+        this.pinkTex.setShininess(10.0);
+        this.pinkTex.loadTexture('images/pink.png');
+        this.pinkTex.setTextureWrap('REPEAT', 'REPEAT'); 
+    }
+
     
     update(t){
       
@@ -93,15 +131,20 @@ class MyVehicle extends CGFobject {
         this.scene.pushMatrix();
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation*Math.PI/180, 0, 1, 0);
-        //this.scene.scale(4,4,4);
+    
+        
         this.scene.translate(0,9,0);
+        //this.scene.scale(2,2,2);
         this.scene.pushMatrix();
       
         this.scene.translate(0,1,0);
         this.scene.scale(0.5,0.5,1);
+        this.bodyTex.apply();
         this.ellipsoid.display(); 
         this.scene.popMatrix();
 
+        //capsule
+        this.pinkTex.apply();
         this.scene.pushMatrix();
         this.scene.translate(0,0.45,-0.30);
         this.scene.scale(0.9,0.9,0.9);
@@ -110,6 +153,7 @@ class MyVehicle extends CGFobject {
 
 
         //engines
+        this.coralTex.apply();
         this.scene.pushMatrix();
         this.scene.translate(0.13,0.37,-0.3);
         this.engine.display();
@@ -125,7 +169,7 @@ class MyVehicle extends CGFobject {
         //rudders
 
         this.scene.pushMatrix();
-        
+        this.blueTex.apply();
         this.scene.translate(0,1.3,-0.7);
         if (this.scene.gui.isKeyPressed("KeyD"))
         this.scene.rotate(Math.PI /8, 0, 1, 0);
@@ -154,10 +198,24 @@ class MyVehicle extends CGFobject {
         
         this.scene.pushMatrix();
         this.scene.translate(0.35,1,-0.7);
-        this.scene.rotate(-Math.PI/2, 0,0,1);
+        this.scene.rotate(-Math.PI/2, 1,0,1);
+       
         this.ruddhoriz.display();
         this.scene.popMatrix();
+        
+
+
+
+        //flag
+        this.scene.pushMatrix();
+        this.scene.translate(0,1,-3);
+        this.scene.scale(1,0.7,1.5)
+        this.scene.rotate(Math.PI/2, 0,1,0);
+        this.flag.display();
         this.scene.popMatrix();
+
+        this.scene.popMatrix();
+
     }
 
 }    
