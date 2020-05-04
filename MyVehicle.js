@@ -33,8 +33,11 @@ class MyVehicle extends CGFobject {
         this.engine=new MyEngine(scene,slices,stacks);
         this.capsule=new MyCapsule(scene,slices,stacks);
         this.flag=new MyPlane(scene);
+
         this.initBuffers();
         this.initMaterials();
+
+        this.shader = new CGFshader(this.scene.gl, "shaders/flag.vert", "shaders/flag.frag");
     }
 
     initMaterials(scene){

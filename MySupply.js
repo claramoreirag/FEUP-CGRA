@@ -15,7 +15,7 @@ class MySupply extends CGFobject {
 
 	constructor(scene) {
         super(scene);
-        this.supply = new MyUnitCubeQuad(this.scene);
+        this.supply = new MyFallingSupply(this.scene);
         this.state=SupplyStates.INACTIVE;
         this.x = 0;
         this.y = 10;
@@ -49,9 +49,9 @@ class MySupply extends CGFobject {
 
 
             this.y -= (10/3)*(this.elapsedtime/500);
-            if(this.y <= 0.6)
+            if(this.y <= 0.3)
             {
-                this.y = 0.6;
+                this.y = 0.3;
                 this.land();
             }
         }
@@ -66,7 +66,7 @@ class MySupply extends CGFobject {
 
     land(){
 
-        if(this.y == 0.6)
+        if(this.y == 0.3)
             this.state = SupplyStates.LANDED;
     }
 
