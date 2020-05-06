@@ -32,12 +32,14 @@ class MyVehicle extends CGFobject {
         this.ellipsoid= new MySphere(scene,slices,stacks);
         this.engine=new MyEngine(scene,slices,stacks);
         this.capsule=new MyCapsule(scene,slices,stacks);
-        this.flag=new MyPlane(scene);
+        this.flag=new MyPlane(scene, 20);
 
         this.initBuffers();
         this.initMaterials();
 
         this.shader = new CGFshader(this.scene.gl, "shaders/flag.vert", "shaders/flag.frag");
+        this.shader.setUniformsValues({uSampler1: 1})
+
     }
 
     initMaterials(scene){
@@ -207,17 +209,21 @@ class MyVehicle extends CGFobject {
         this.scene.popMatrix();
         
 
-
+        
 
         //flag
         this.scene.pushMatrix();
+        
+        this.scene.setActiveShader(this.shader);
         this.scene.translate(0,1,-3);
-        this.scene.scale(1,0.7,1.5)
+        this.scene.scale(0.05,0.7,1.5);
         this.scene.rotate(Math.PI/2, 0,1,0);
         this.flag.display();
+        this.scene.setActiveShader(this.scene.defaultShader);
         this.scene.popMatrix();
-
+    
         this.scene.popMatrix();
+        
 
     }
 

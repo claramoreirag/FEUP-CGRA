@@ -12,17 +12,15 @@ uniform mat4 uNMatrix;
 
 varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
-uniform sampler2D uSampler2;
-uniform float normscale;
 
-//ter um speedFactor e um timeFactor?
 
 void main() {
     
 
     vTextureCoord = aTextureCoord;
 
-    vec3 offset = aVertexNormal * texture2D(uSampler2, vec2(0.0,0.1)+vTextureCoord).b * 0.4;
-
+    vec3 offset = vec3 (0.0,0.0,0.0);
+    //offset.z=0.07*sin(aVertexPosition.x*20.0);
+    offset.z=sin(vTextureCoord.s*20.0);
     gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition + offset, 1.0);
 } 
