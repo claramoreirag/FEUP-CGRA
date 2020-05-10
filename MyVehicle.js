@@ -40,6 +40,7 @@ class MyVehicle extends CGFobject {
         this.shader = new CGFshader(this.scene.gl, "shaders/flag.vert", "shaders/flag.frag");
         this.shader.setUniformsValues({uSampler1: 1})
         this.shader.setUniformsValues({timeFactor: this.lastUpdate});
+        this.shader.setUniformsValues({speedFactor: this.v});
 
     }
 
@@ -100,6 +101,7 @@ class MyVehicle extends CGFobject {
         }
 
         this.shader.setUniformsValues({timeFactor: t / 1000 % 1000});
+        this.shader.setUniformsValues({speedFactor: this.v});
     }
 
     turn(val){
