@@ -32,15 +32,11 @@ class MyVehicle extends CGFobject {
         this.ellipsoid= new MySphere(scene,slices,stacks);
         this.engine=new MyEngine(scene,slices,stacks);
         this.capsule=new MyCapsule(scene,slices,stacks);
-        this.flag=new MyPlane(scene, 20);
+        this.flag=new MyFlag(scene);
 
         this.initBuffers();
         this.initMaterials();
 
-        this.shader = new CGFshader(this.scene.gl, "shaders/flag.vert", "shaders/flag.frag");
-        this.shader.setUniformsValues({uSampler1: 1})
-        this.shader.setUniformsValues({timeFactor: this.lastUpdate});
-        this.shader.setUniformsValues({speedFactor: this.v});
 
     }
 
@@ -83,9 +79,7 @@ class MyVehicle extends CGFobject {
     update(t){
       
 
-        if (this.lastUpdate == 0) {
-            this.lastUpdate = t;
-        }
+       
         this.elapsedtime = t - this.lastUpdate;
         this.lastUpdate = t;
 
@@ -100,8 +94,8 @@ class MyVehicle extends CGFobject {
             this.x += this.v * Math.sin(this.orientation*Math.PI/180.0);
         }
 
-        this.shader.setUniformsValues({timeFactor: t / 1000 % 1000});
-        this.shader.setUniformsValues({speedFactor: this.v});
+        this.flag.update(t / 1000 % 1000, this.v);
+      
     }
 
     turn(val){
@@ -217,15 +211,9 @@ class MyVehicle extends CGFobject {
         
 
         //flag
-        this.scene.pushMatrix();
-        
-        this.scene.setActiveShader(this.shader);
-        this.scene.translate(0,1,-3);
-        this.scene.scale(0.05,0.7,1.5);
-        this.scene.rotate(Math.PI/2, 0,1,0);
+       
         this.flag.display();
-        this.scene.setActiveShader(this.scene.defaultShader);
-        this.scene.popMatrix();
+     
     
         this.scene.popMatrix();
         
