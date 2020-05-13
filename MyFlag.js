@@ -7,7 +7,7 @@
 class MyFlag extends CGFobject {
 	constructor(scene) {
         super(scene);
-        this.flag = new MyPlane(this.scene, 20);
+        this.flag = new MyPlane(this.scene, 40);
         this.rod = new MyDSQuad(this.scene);
         this.initTexture(this.scene);
 

@@ -125,9 +125,8 @@ class MyScene extends CGFscene {
                 this.supplies_vec[idx].state = SupplyStates.INACTIVE;
                 this.supplies_vec[idx].y = 10;
                 this.supplies_vec[idx].lastUpdate = 0;
-
-
             }
+            this.billBoard.reset();
         }
 
         if (this.gui.isKeyPressed("KeyP") && !this.vehicle.autopilot){
@@ -138,6 +137,8 @@ class MyScene extends CGFscene {
         {
             this.supplies_vec[this.supplies_used].drop(this.vehicle.x, this.vehicle.z);
             this.supplies_used++;
+            this.billBoard.update(this.supplies_used);
+
         }
 
         if(keysPressed)
