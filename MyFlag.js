@@ -61,7 +61,7 @@ class MyFlag extends CGFobject {
         this.scene.setActiveShader(this.shaderfront);
         this.scene.pushMatrix();
         this.scene.translate(0,1,-3);
-        this.scene.scale(0.05,0.7,1.5);
+        this.scene.scale(0.04,0.7,1.5);
         this.scene.rotate(Math.PI/2, 0,1,0);
         this.flag.display();
         this.scene.popMatrix();
