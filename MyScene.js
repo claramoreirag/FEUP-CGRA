@@ -185,7 +185,7 @@ class MyScene extends CGFscene {
         this.popMatrix();
         this.diamondMaterial.apply();
         this.vehicle.display();
-        
+        this.billBoard.display();
 
         this.terrain.display();
         for(var idx = 0; idx < 5; idx++)

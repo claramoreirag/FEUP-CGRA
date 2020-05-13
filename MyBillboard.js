@@ -31,12 +31,12 @@ class MyBillboard extends CGFobject {
 
         this.scene.pushMatrix();
         this.scene.translate(-0.8,0,0);
-        this.scene.beam1.display();
+        this.beam1.display();
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
         this.scene.translate(0.8,0,0);
-        this.scene.beam2.display();
+        this.beam2.display();
         this.scene.popMatrix();
 
 
