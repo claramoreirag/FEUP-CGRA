@@ -119,6 +119,8 @@ class MyVehicle extends CGFobject {
         this.autopilot=false;
         this.lastUpdate=0;
     }
+
+
     activateAutopilot(){
         this.autopilot=true;
         var angle = this.orientation * Math.PI / 180 + Math.PI/2;
@@ -127,18 +129,13 @@ class MyVehicle extends CGFobject {
 
     }
 
-    desactivateAutopilot(){
-        this.autopilot=false;
-    }
+
 
     display(){
         this.scene.pushMatrix();
         this.scene.translate(this.x, this.y, this.z);
         this.scene.rotate(this.orientation*Math.PI/180, 0, 1, 0);
-    
-        
         this.scene.translate(0,9,0);
-        //this.scene.scale(2,2,2);
         this.scene.pushMatrix();
       
         this.scene.translate(0,1,0);
@@ -171,8 +168,7 @@ class MyVehicle extends CGFobject {
 
 
         //rudders
-
-        this.scene.pushMatrix();
+         this.scene.pushMatrix();
         this.blueTex.apply();
         this.scene.translate(0,1.3,-0.7);
         if (this.scene.gui.isKeyPressed("KeyD"))
@@ -192,26 +188,20 @@ class MyVehicle extends CGFobject {
         this.ruddvert.display();
         this.scene.popMatrix();
 
-        
         this.scene.pushMatrix();
         this.scene.translate(-0.35,1,-0.7);
         this.scene.rotate(Math.PI/2, 0,0,1);
         this.ruddhoriz.display();
         this.scene.popMatrix();
-
-        
+ 
         this.scene.pushMatrix();
         this.scene.translate(0.35,1,-0.7);
         this.scene.rotate(-Math.PI/2, 0,0,1);
-       
         this.ruddhoriz.display();
         this.scene.popMatrix();
-        
-
-        
+    
 
         //flag
-       
         this.flag.display();
      
     

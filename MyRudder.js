@@ -17,14 +17,18 @@ class MyRudder extends CGFobject {
     }
     
     display(){
+
+        
         this.scene.pushMatrix();
         this.scene.scale(0.35,0.35,0.35);
         this.scene.rotate(-Math.PI/2, 0,1,0);
+
+        //quad
         this.scene.pushMatrix();
         this.scene.translate(-1,0,0);
         this.quad.display();
 
-
+        //triangle
         this.scene.popMatrix();
         this.scene.pushMatrix();
         this.scene.scale(0.5,0.5,0.5);

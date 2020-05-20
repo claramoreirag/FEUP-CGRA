@@ -10,13 +10,12 @@ class MyInterface extends CGFinterface {
     init(application) {
         // call CGFinterface init
         super.init(application);
-        // init GUI. For more information on the methods, check:
-        // http://workshop.chromeexperiments.com/examples/gui
+       
         this.gui = new dat.GUI();
         
         var obj = this;
 
-        //Checkbox element in GUI
+        //Checkbox elements in GUI
         this.gui.add(this.scene,'currentTexture',this.scene.textureList).onChange(this.scene.updateTexture.bind(this.scene)).name('Texture');
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
         this.gui.add(this.scene, 'scaleFactor', 0.5, 3).name('Scale Factor');

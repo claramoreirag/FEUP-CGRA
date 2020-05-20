@@ -37,12 +37,12 @@ class MyBillboard extends CGFobject {
     }
 
     
-
     update(supplies){
         this.supplies=supplies;
         this.progressShader.setUniformsValues({ supp: this.supplies});
     }
 
+    
     reset(){
         this.supplies=0;
         this.progressShader.setUniformsValues({ supp: 0 });

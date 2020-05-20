@@ -13,6 +13,7 @@ class MyScene extends CGFscene {
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
@@ -38,8 +39,6 @@ class MyScene extends CGFscene {
         {
             this.supplies_vec.push(new MySupply(this));
         }
-
-        
         //Objects connected to MyInterface
         this.displayAxis = true;
 
@@ -168,11 +167,11 @@ class MyScene extends CGFscene {
 
         this.multMatrix(sca);
 
-        // ---- BEGIN Primitive drawing section
 
+
+        // ---- BEGIN Primitive drawing section
        
         this.cube.display();
-        this.popMatrix();
         this.vehicle.display();
         this.billBoard.display();
         this.terrain.display();

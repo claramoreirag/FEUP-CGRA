@@ -33,8 +33,6 @@ class MyFlag extends CGFobject {
         this.rodTex.setTextureWrap('REPEAT', 'REPEAT');
 
 
-
-
         //shaders
         this.shaderback = new CGFshader(this.scene.gl, "shaders/flag.vert", "shaders/flag.frag");
         this.shaderback.setUniformsValues({ uSampler1: 1 });

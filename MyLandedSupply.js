@@ -34,7 +34,6 @@ class MyLandedSupply extends CGFobject {
         this.sidesTex.setDiffuse(0.9, 0.9, 0.9, 1);
         this.sidesTex.setSpecular(0.1, 0.1, 0.1, 1);
         this.sidesTex.setShininess(10.0);
-    
         this.sidesTex.loadTexture('images/boxpink1.png');
         this.sidesTex.setTextureWrap('REPEAT', 'REPEAT');
 
@@ -53,18 +52,20 @@ class MyLandedSupply extends CGFobject {
     display(){
         this.scene.pushMatrix();
         this.scene.scale(0.4,0.4,0.4);
+
+        //ball
+        this.scene.pushMatrix();
+        this.scene.scale(0.4,0.4,0.4);
+        this.bodyTex.apply();
+        this.ball.display();
+        this.scene.popMatrix();
+
+        //cube faces
         this.scene.pushMatrix();
         this.scene.translate(0,-0.5,0);
         this.scene.rotate(Math.PI/2,1,0,0);
         this.bottomTex.apply();
         this.down.display();
-        this.scene.popMatrix();
-
-
-        this.scene.pushMatrix();
-        this.scene.scale(0.4,0.4,0.4);
-        this.bodyTex.apply();
-        this.ball.display();
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
@@ -90,6 +91,8 @@ class MyLandedSupply extends CGFobject {
         this.scene.translate(0,0,0.5);
         this.front.display();
         this.scene.popMatrix();
+
+        
         this.scene.popMatrix();
     }
 

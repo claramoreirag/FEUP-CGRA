@@ -51,14 +51,14 @@ class MyCubeMap extends CGFobject {
         this.b.setTextureWrap('REPEAT', 'REPEAT');
 
         //bottom material
-        this.bot = new CGFappearance(this.scene);
-        this.bot.setAmbient(0.9, 0.9, 0.9, 1);
-        this.bot.setDiffuse(0.0, 0.0, 0.0, 1);
-        this.bot.setSpecular(0.0, 0.0, 0.0, 1);
-        this.bot.setShininess(10.0);
-        this.bot.setEmission(0.5,0.5,0.5,1);
-        this.bot.loadTexture('images/split_cubemap/bottom.png');
-        this.bot.setTextureWrap('REPEAT', 'REPEAT');
+        this.bottom = new CGFappearance(this.scene);
+        this.bottom.setAmbient(0.9, 0.9, 0.9, 1);
+        this.bottom.setDiffuse(0.0, 0.0, 0.0, 1);
+        this.bottom.setSpecular(0.0, 0.0, 0.0, 1);
+        this.bottom.setShininess(10.0);
+        this.bottom.setEmission(0.5,0.5,0.5,1);
+        this.bottom.loadTexture('images/split_cubemap/bottom.png');
+        this.bottom.setTextureWrap('REPEAT', 'REPEAT');
 
 
         //top material
@@ -77,58 +77,54 @@ class MyCubeMap extends CGFobject {
         this.scene.pushMatrix();
         this.scene.scale(50,50,50);
 
+        //bottom
         this.scene.pushMatrix();
         this.scene.translate(0,-0.5,0);
         this.scene.rotate(Math.PI/2,1,0,0);
-        
-        this.bot.apply();
-        
-
+        this.bottom.apply();
         this.quad.display();
         this.scene.popMatrix();
 
-
+        //top
         this.scene.pushMatrix();
         this.scene.translate(0,0.5,0);
         this.scene.rotate(-Math.PI/2,1,0,0);
         this.top.apply();
-        
-
         this.quad.display();
         this.scene.popMatrix();
 
+        //left
         this.scene.pushMatrix();
         this.scene.translate(-0.5,0,0);
         this.scene.rotate(-Math.PI/2,0,1,0);
-        this.l.apply();
-        
-        
+        this.l.apply();  
         this.quad.display();
         this.scene.popMatrix();
         
-        
+        //right
         this.scene.pushMatrix();
         this.scene.translate(0.5,0,0);
         this.scene.rotate(Math.PI/2,0,1,0);
-      
         this.r.apply();
         this.quad.display();
         this.scene.popMatrix();
 
+        //back
         this.scene.pushMatrix();
         this.scene.translate(0,0,-0.5);
         this.scene.rotate(Math.PI,0,1,0);
-
         this.b.apply();
         this.quad.display();
         this.scene.popMatrix();
         
+        //front
         this.scene.pushMatrix();
         this.fr.apply();
         this.scene.translate(0,0,0.5);
         this.quad.display();
         this.scene.popMatrix();
         
+        this.scene.popMatrix();
     }
     enableNormalViz(){
         this.quad.enableNormalViz()
@@ -142,14 +138,14 @@ class MyCubeMap extends CGFobject {
             this.l.loadTexture('images/split_cubemap/left.png');
             this.r.loadTexture('images/split_cubemap/right.png');
             this.b.loadTexture('images/split_cubemap/back.png');
-            this.bot.loadTexture('images/split_cubemap/bottom.png');
+            this.bottom.loadTexture('images/split_cubemap/bottom.png');
             this.top.loadTexture('images/split_cubemap/top.png');
         }
         else if(this.scene.currentTexture==1){
             this.r.loadTexture('images/split_mountains/right.jpg');
             this.fr.loadTexture('images/split_mountains/front.jpg');
             this.l.loadTexture('images/split_mountains/left.jpg');
-            this.bot.loadTexture('images/split_mountains/bottom.jpg');
+            this.bottom.loadTexture('images/split_mountains/bottom.jpg');
             this.b.loadTexture('images/split_mountains/back.jpg');
             this.top.loadTexture('images/split_mountains/top.jpg');
         }

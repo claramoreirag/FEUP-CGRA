@@ -13,11 +13,14 @@ class MyCapsule extends CGFobject {
     }
 
     display(){
+
+        //main body
         this.scene.pushMatrix();
         this.scene.rotate(Math.PI/2, 1,0,0);
         this.cylinder.display();
         this.scene.popMatrix();
 
+        //rounded edges
         this.scene.pushMatrix();
         this.scene.scale(0.125,0.125,0.125);
         this.scene.rotate(Math.PI/2, 1,0,0);
