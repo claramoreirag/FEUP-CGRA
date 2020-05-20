@@ -13,7 +13,6 @@ class MyScene extends CGFscene {
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
@@ -39,21 +38,13 @@ class MyScene extends CGFscene {
         {
             this.supplies_vec.push(new MySupply(this));
         }
+
+        
         //Objects connected to MyInterface
         this.displayAxis = true;
 
 
-        this.diamondMaterial = new CGFappearance(this);
-        this.diamondMaterial.setAmbient(0.1, 0.1, 0.1, 1);
-        this.diamondMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.diamondMaterial.setSpecular(0.1, 0.1, 0.1, 1);
-        this.diamondMaterial.setShininess(10.0);
-        this.diamondMaterial.loadTexture('images/earth.jpg');
-        this.diamondMaterial.setTextureWrap( 'Repeat','Clamp to edge');
-
-
         this.currentTexture=0;
-        
         this.textureList={'Cubemap':0,'Mountains':1};
 
         this.speedFactor = 0.5;
@@ -179,16 +170,14 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        //This sphere does not have defined texture coordinates
-        //this.incompleteSphere.display();
-        //this.cylinder.display();
+       
         this.cube.display();
         this.popMatrix();
-        this.diamondMaterial.apply();
         this.vehicle.display();
         this.billBoard.display();
-
         this.terrain.display();
+
+        
         for(var idx = 0; idx < 5; idx++)
         {
             this.supplies_vec[idx].display();

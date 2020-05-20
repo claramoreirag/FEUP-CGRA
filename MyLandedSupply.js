@@ -26,7 +26,7 @@ class MyLandedSupply extends CGFobject {
         this.bottomTex.setDiffuse(0.9, 0.9, 0.9, 1);
         this.bottomTex.setSpecular(0.1, 0.1, 0.1, 1);
         this.bottomTex.setShininess(10.0);
-        this.bottomTex.loadTexture('images/box.png');
+        this.bottomTex.loadTexture('images/boxpink.png');
         this.bottomTex.setTextureWrap('REPEAT', 'REPEAT');
 
         this.sidesTex = new CGFappearance(this.scene);
@@ -34,7 +34,8 @@ class MyLandedSupply extends CGFobject {
         this.sidesTex.setDiffuse(0.9, 0.9, 0.9, 1);
         this.sidesTex.setSpecular(0.1, 0.1, 0.1, 1);
         this.sidesTex.setShininess(10.0);
-        this.sidesTex.loadTexture('images/box1.png');
+    
+        this.sidesTex.loadTexture('images/boxpink1.png');
         this.sidesTex.setTextureWrap('REPEAT', 'REPEAT');
 
         this.bodyTex = new CGFappearance(this.scene);
@@ -42,6 +43,7 @@ class MyLandedSupply extends CGFobject {
         this.bodyTex.setDiffuse(0.9, 0.9, 0.9, 1);
         this.bodyTex.setSpecular(0.1, 0.1, 0.1, 1);
         this.bodyTex.setShininess(10.0);
+        this.bodyTex.setEmission(1,1,1,1);
         this.bodyTex.loadTexture('images/flowers.jpg');
         this.bodyTex.setTextureWrap('REPEAT', 'REPEAT');
 

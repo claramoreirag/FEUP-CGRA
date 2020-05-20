@@ -7,7 +7,7 @@
 class MyFlag extends CGFobject {
 	constructor(scene) {
         super(scene);
-        this.flag = new MyPlane(this.scene, 40);
+        this.flag = new MyPlane(this.scene, 20);
         this.rod = new MyDSQuad(this.scene);
         this.initTexture(this.scene);
 
@@ -20,7 +20,7 @@ class MyFlag extends CGFobject {
         this.texture.setDiffuse(0.9, 0.9, 0.9, 1);
         this.texture.setSpecular(0.0, 0.0, 0.0, 1);
         this.texture.setShininess(10.0);
-        this.texture.loadTexture('images/flag1.png');
+        this.texture.loadTexture('images/flag.png');
         this.texture.setTextureWrap('CLAMP_TO_EDGE', 'CLAMP_TO_EDGE');
         
         

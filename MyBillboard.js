@@ -8,7 +8,7 @@ class MyBillboard extends CGFobject {
     {
         super(scene);
         this.plane = new MyPlane(scene,100);
-        this.progressBar = new MyPlane(scene, 40);
+        this.progressBar = new MyPlane(scene, 20);
         this.beam1 = new MyBeam(scene);
         this.beam2 = new MyBeam(scene);
         this.initTexture(this.scene);
@@ -30,7 +30,7 @@ class MyBillboard extends CGFobject {
         this.texture.setDiffuse(0.9, 0.9, 0.9, 1);
         this.texture.setSpecular(0.0, 0.0, 0.0, 1);
         this.texture.setShininess(10.0);
-        this.texture.loadTexture('images/supplies2.png');
+        this.texture.loadTexture('images/supplies.png');
         this.texture.setTextureWrap('CLAMP_TO_EDGE', 'CLAMP_TO_EDGE');
 
         this.progressShader = new CGFshader(scene.gl,"shaders/progressbar.vert","shaders/progressbar.frag");
@@ -50,7 +50,7 @@ class MyBillboard extends CGFobject {
 
     display(){
         this.scene.pushMatrix();
-        this.scene.translate(-2,0.5,-2);
+        this.scene.translate(10,3,10);
         this.scene.rotate(Math.PI/4, 0,1,0);
 
 
