@@ -1,0 +1,6 @@
+Turma: 1
+Grupo: 6
+Clara Gadelho: 201806309
+Leonor Gomes: 201806567
+
+Todas as funcionalidades foram implementadas.
